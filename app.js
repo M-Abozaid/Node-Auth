@@ -3,12 +3,20 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var bodyParser = require('body-parser');
+var multer = require('multer');
+var flash = require('connect-flash');
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var db = mongoose.connection;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
+var app = express(); // the core Express instance. (Object)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
